@@ -1,9 +1,3 @@
-//package com.ims.repository;
-//
-//public class UserRepository {
-//
-//}
-
 package com.ims.repository;
 
 import java.util.Optional;

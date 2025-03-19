@@ -1,10 +1,5 @@
-//package com.ims.entity;
-//
-//public class User {
-//
-//}
-
 package com.ims.entity;
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -19,14 +14,15 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String firstName;
+    private String lastName;
+    private String username;
+    
     @Column(unique = true, nullable = false)
     private String email;
     
+    private String phoneNumber;
+    
     @Column(nullable = false)
     private String password;
-    
-    private String firstName;
-    private String lastName;
-    private String location;
-    private String mobileNumber;
 }

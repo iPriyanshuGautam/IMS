@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="C:\Users\gauta\OneDrive\Desktop\Capstone\Backend\ProductService"/>
 			<item value="C:\Users\gauta\OneDrive\Desktop\Capstone\Backend\Api-gateway"/>
 			<item value="C:\Users\gauta\OneDrive\Desktop\Capstone\Backend\Service-registry"/>
 			<item value="C:\Users\gauta\OneDrive\Desktop\Capstone\Backend\UserService"/>

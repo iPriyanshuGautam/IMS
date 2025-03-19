@@ -1,8 +1,3 @@
-//package com.ims.controller;
-//
-//public class UserController {
-//
-//}
 package com.ims.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +8,7 @@ import com.ims.service.UserService;
 
 @RestController
 @RequestMapping("/auth")
+@CrossOrigin(origins = "http://localhost:4200")  // Allow Angular frontend to make requests
 public class UserController {
 
     @Autowired
@@ -22,11 +18,5 @@ public class UserController {
     public String register(@RequestBody User user) {
         userService.registerUser(user);
         return "User registered successfully!";
-    }
-
-    @PostMapping("/login")
-    public String login(@RequestBody User user) {
-        boolean isAuthenticated = userService.loginUser(user.getEmail(), user.getPassword());
-        return isAuthenticated ? "Login Successful!" : "Invalid Credentials!";
     }
 }

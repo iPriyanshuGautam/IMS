@@ -1,54 +1,22 @@
-//package com.ims.config;
-//
-//public class SecurityConfig {
-//
-//}
-
-//package com.ims.config;
-//
-//import org.springframework.context.annotation.Bean;
-//import org.springframework.context.annotation.Configuration;
-//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-//
-//@Configuration
-//public class SecurityConfig {
-//
-//    @Bean
-//    public BCryptPasswordEncoder passwordEncoder() {
-//        return new BCryptPasswordEncoder();
-//    }
-//}
-
-
 package com.ims.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
-@EnableWebSecurity
 public class SecurityConfig {
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            .csrf().disable() 
+            .cors().and()  // Enable CORS
+            .csrf().disable()  // Disable CSRF for testing
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/auth/register", "/auth/login").permitAll() 
-                .anyRequest().authenticated()
+                .requestMatchers("/auth/**").permitAll()  // Allow unauthenticated access to /auth/register
+                .anyRequest().authenticated()  // Require authentication for other endpoints
             )
-            .httpBasic(); 
+            .httpBasic();  // Enable basic auth (if needed)
 
         return http.build();
     }
